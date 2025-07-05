@@ -1,0 +1,17 @@
+name: Gitleaks Scan
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  gitleaks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Gitleaks scan
+        uses: gitleaks/gitleaks-action@v2
+        with:
+          fail: true  # set to false if you only want warnings, not failed builds
